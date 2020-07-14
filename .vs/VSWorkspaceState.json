@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\DatingApp.API",
+    "\\DatingApp-SPA",
+    "\\DatingApp-SPA\\src",
+    "\\DatingApp-SPA\\src\\app",
+    "\\DatingApp-SPA\\src\\app\\Register",
     "\\DatingApp.API\\Helpers"
   ],
-  "SelectedNode": "\\DatingApp.API\\Startup.cs",
+  "SelectedNode": "\\DatingApp-SPA\\src\\app\\Register\\Register.component.html",
   "PreviewInSolutionExplorer": false
 }
