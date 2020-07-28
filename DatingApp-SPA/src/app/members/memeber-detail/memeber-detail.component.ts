@@ -5,6 +5,7 @@ import { UserService } from 'src/app/_services/User.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 import { TabsetComponent } from 'ngx-bootstrap';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-memeber-detail',
@@ -12,12 +13,14 @@ import { TabsetComponent } from 'ngx-bootstrap';
   styleUrls: ['./memeber-detail.component.css']
 })
 export class MemeberDetailComponent implements OnInit {
-  @ViewChild('memberTabs') memberTabs:TabsetComponent;
+  @ViewChild('memberTabs') memberTabs: TabsetComponent;
   user: User;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
-  constructor(private userService: UserService, private alertify: AlertifyService,
+  constructor(private userService: UserService,
+              private authService: AuthService,
+              private alertify: AlertifyService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -59,6 +62,14 @@ export class MemeberDetailComponent implements OnInit {
 
   selectTab(tabId: number){
     this.memberTabs.tabs[tabId].active = true;
+  }
+
+  sendLike(id: number) {
+    this.userService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data=> {
+      this.alertify.success('You have liked ' + this.user.knownAs);
+    }, error => {
+      this.alertify.error(error);
+    });
   }
 
   // loadUser() {

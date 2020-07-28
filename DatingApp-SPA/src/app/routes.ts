@@ -12,6 +12,7 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { ListsResolver } from './_resolvers/lists.resolver';
 import { MessagesResolver } from './_resolvers/messages.resolver';
+import { AboutComponent } from './About/About.component';
 
 export const appRoutes: Routes = [
   {path: '', component: HomeComponent},
